@@ -10,6 +10,10 @@ using System.Windows.Forms;
 
 namespace PDMS_Addins
 {
+    // TODO: Implement this function
+    /// <summary>
+    /// Not implemented yet.
+    /// </summary>
     public partial class Options : Form
     {
         public Options()
