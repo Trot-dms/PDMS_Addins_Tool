@@ -35,16 +35,16 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusPDMSfolder = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.addNewAddin = new System.Windows.Forms.Button();
+            this.addinsOffList = new System.Windows.Forms.ListBox();
+            this.turnAddinOff = new System.Windows.Forms.Button();
+            this.turnAddinOn = new System.Windows.Forms.Button();
+            this.addinsOnList = new System.Windows.Forms.ListBox();
             this.addinsList = new System.Windows.Forms.CheckedListBox();
             this.modulesComboBox = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.addinsOnList = new System.Windows.Forms.ListBox();
-            this.turnAddinOn = new System.Windows.Forms.Button();
-            this.turnAddinOff = new System.Windows.Forms.Button();
-            this.addinsOffList = new System.Windows.Forms.ListBox();
-            this.addNewAddin = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -113,6 +113,56 @@
             this.panel1.Size = new System.Drawing.Size(447, 418);
             this.panel1.TabIndex = 2;
             // 
+            // addNewAddin
+            // 
+            this.addNewAddin.Location = new System.Drawing.Point(284, 33);
+            this.addNewAddin.Name = "addNewAddin";
+            this.addNewAddin.Size = new System.Drawing.Size(33, 33);
+            this.addNewAddin.TabIndex = 6;
+            this.addNewAddin.Text = "+";
+            this.addNewAddin.UseVisualStyleBackColor = true;
+            // 
+            // addinsOffList
+            // 
+            this.addinsOffList.FormattingEnabled = true;
+            this.addinsOffList.Location = new System.Drawing.Point(323, 28);
+            this.addinsOffList.Name = "addinsOffList";
+            this.addinsOffList.Size = new System.Drawing.Size(120, 381);
+            this.addinsOffList.TabIndex = 5;
+            this.addinsOffList.SelectedIndexChanged += new System.EventHandler(this.addinsOffList_SelectedIndexChanged);
+            this.addinsOffList.SizeChanged += new System.EventHandler(this.addinsOnList_SizeChanged);
+            this.addinsOffList.DoubleClick += new System.EventHandler(this.turnAddinOff_Click);
+            // 
+            // turnAddinOff
+            // 
+            this.turnAddinOff.Location = new System.Drawing.Point(284, 211);
+            this.turnAddinOff.Name = "turnAddinOff";
+            this.turnAddinOff.Size = new System.Drawing.Size(33, 66);
+            this.turnAddinOff.TabIndex = 4;
+            this.turnAddinOff.Text = "<<";
+            this.turnAddinOff.UseVisualStyleBackColor = true;
+            this.turnAddinOff.Click += new System.EventHandler(this.turnAddinOff_Click);
+            // 
+            // turnAddinOn
+            // 
+            this.turnAddinOn.Location = new System.Drawing.Point(284, 139);
+            this.turnAddinOn.Name = "turnAddinOn";
+            this.turnAddinOn.Size = new System.Drawing.Size(33, 66);
+            this.turnAddinOn.TabIndex = 3;
+            this.turnAddinOn.Text = ">>";
+            this.turnAddinOn.UseVisualStyleBackColor = true;
+            this.turnAddinOn.Click += new System.EventHandler(this.turnAddinOn_Click);
+            // 
+            // addinsOnList
+            // 
+            this.addinsOnList.FormattingEnabled = true;
+            this.addinsOnList.Location = new System.Drawing.Point(158, 28);
+            this.addinsOnList.Name = "addinsOnList";
+            this.addinsOnList.Size = new System.Drawing.Size(120, 381);
+            this.addinsOnList.TabIndex = 2;
+            this.addinsOnList.SizeChanged += new System.EventHandler(this.addinsOnList_SizeChanged);
+            this.addinsOnList.DoubleClick += new System.EventHandler(this.turnAddinOn_Click);
+            // 
             // addinsList
             // 
             this.addinsList.FormattingEnabled = true;
@@ -161,56 +211,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // addinsOnList
-            // 
-            this.addinsOnList.FormattingEnabled = true;
-            this.addinsOnList.Location = new System.Drawing.Point(158, 28);
-            this.addinsOnList.Name = "addinsOnList";
-            this.addinsOnList.Size = new System.Drawing.Size(120, 381);
-            this.addinsOnList.TabIndex = 2;
-            this.addinsOnList.SizeChanged += new System.EventHandler(this.addinsOnList_SizeChanged);
-            this.addinsOnList.DoubleClick += new System.EventHandler(this.turnAddinOn_Click);
-            // 
-            // turnAddinOn
-            // 
-            this.turnAddinOn.Location = new System.Drawing.Point(284, 139);
-            this.turnAddinOn.Name = "turnAddinOn";
-            this.turnAddinOn.Size = new System.Drawing.Size(33, 66);
-            this.turnAddinOn.TabIndex = 3;
-            this.turnAddinOn.Text = ">>";
-            this.turnAddinOn.UseVisualStyleBackColor = true;
-            this.turnAddinOn.Click += new System.EventHandler(this.turnAddinOn_Click);
-            // 
-            // turnAddinOff
-            // 
-            this.turnAddinOff.Location = new System.Drawing.Point(284, 211);
-            this.turnAddinOff.Name = "turnAddinOff";
-            this.turnAddinOff.Size = new System.Drawing.Size(33, 66);
-            this.turnAddinOff.TabIndex = 4;
-            this.turnAddinOff.Text = "<<";
-            this.turnAddinOff.UseVisualStyleBackColor = true;
-            this.turnAddinOff.Click += new System.EventHandler(this.turnAddinOff_Click);
-            // 
-            // addinsOffList
-            // 
-            this.addinsOffList.FormattingEnabled = true;
-            this.addinsOffList.Location = new System.Drawing.Point(323, 28);
-            this.addinsOffList.Name = "addinsOffList";
-            this.addinsOffList.Size = new System.Drawing.Size(120, 381);
-            this.addinsOffList.TabIndex = 5;
-            this.addinsOffList.SelectedIndexChanged += new System.EventHandler(this.addinsOffList_SelectedIndexChanged);
-            this.addinsOffList.SizeChanged += new System.EventHandler(this.addinsOnList_SizeChanged);
-            this.addinsOffList.DoubleClick += new System.EventHandler(this.turnAddinOff_Click);
-            // 
-            // addNewAddin
-            // 
-            this.addNewAddin.Location = new System.Drawing.Point(284, 33);
-            this.addNewAddin.Name = "addNewAddin";
-            this.addNewAddin.Size = new System.Drawing.Size(33, 33);
-            this.addNewAddin.TabIndex = 6;
-            this.addNewAddin.Text = "+";
-            this.addNewAddin.UseVisualStyleBackColor = true;
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,7 +223,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainWindow";
-            this.Text = "PDMS Addins Manager";
+            this.Text = "PDMS Addins Manager Tool";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
