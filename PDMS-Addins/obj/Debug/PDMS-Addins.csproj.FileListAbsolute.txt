@@ -1,0 +1,10 @@
+X:\Dokumenty\Visual Studio 2015\Projects\PDMS-Addins\PDMS-Addins\bin\Debug\PDMS-Addins.exe.config
+X:\Dokumenty\Visual Studio 2015\Projects\PDMS-Addins\PDMS-Addins\bin\Debug\PDMS-Addins.exe
+X:\Dokumenty\Visual Studio 2015\Projects\PDMS-Addins\PDMS-Addins\bin\Debug\PDMS-Addins.pdb
+X:\Dokumenty\Visual Studio 2015\Projects\PDMS-Addins\PDMS-Addins\obj\Debug\PDMS-Addins.csprojResolveAssemblyReference.cache
+X:\Dokumenty\Visual Studio 2015\Projects\PDMS-Addins\PDMS-Addins\obj\Debug\PDMS_Addins.MainWindow.resources
+X:\Dokumenty\Visual Studio 2015\Projects\PDMS-Addins\PDMS-Addins\obj\Debug\PDMS_Addins.Properties.Resources.resources
+X:\Dokumenty\Visual Studio 2015\Projects\PDMS-Addins\PDMS-Addins\obj\Debug\PDMS-Addins.csproj.GenerateResource.Cache
+X:\Dokumenty\Visual Studio 2015\Projects\PDMS-Addins\PDMS-Addins\obj\Debug\PDMS-Addins.exe
+X:\Dokumenty\Visual Studio 2015\Projects\PDMS-Addins\PDMS-Addins\obj\Debug\PDMS-Addins.pdb
+X:\Dokumenty\Visual Studio 2015\Projects\PDMS-Addins\PDMS-Addins\obj\Debug\PDMS_Addins.Options.resources
