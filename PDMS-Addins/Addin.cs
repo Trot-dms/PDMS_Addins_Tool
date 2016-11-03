@@ -10,9 +10,9 @@ namespace PDMS_Addins
 {
     class Addin
     {
-
+        #region Fields and properities
         /// <summary>
-        /// Właściwości widoczne dla tworzonego obiektu
+        /// Properities
         /// </summary>
         public List<string> ModuleList { get; set; }
         public List<string> AddinList { get; set; }
@@ -20,19 +20,19 @@ namespace PDMS_Addins
 
 
         /// <summary>
-        /// Prywatne pola do zarządzania danymi wewnątrz obiektu
-        /// addinList - przechowuje listę addinów dla danego modułu
-        /// moduleList - przechowuje listę modułów występujących w folderze PDMSa
+        /// Private lists for storing data
+        /// <param name="addinList">For storing addins for selected module</param>
+        /// <param name="moduleList">For storing module list from PDMS</param>
         /// </summary>
         private List<string> addinList = new List<string>();
         private List<string> moduleList = new List<string>();
         private string pdmsFolder;
-
+        #endregion
 
         /// <summary>
-        /// Domyślny konstruktor z podaniem ścieżki do PDMSa
+        /// Default constructor
         /// </summary>
-        /// <param name="pdmsFolder">Ścieżka do PDMSa</param>
+        /// <param name="pdmsFolder">Path to PDMS folder</param>
         public Addin(string pdmsFolder)
         {
             this.pdmsFolder = pdmsFolder;
@@ -42,7 +42,7 @@ namespace PDMS_Addins
 
 
         /// <summary>
-        /// Konstruktor bez podania ścieżki, przyjmuje folder uruchomienia exe jako folder PDMSa
+        /// Constructor without path gets default application path
         /// </summary>
         public Addin()
         {
@@ -53,7 +53,7 @@ namespace PDMS_Addins
 
 
         /// <summary>
-        /// Czyści listę modułów i wyszukuje w folderze PDMSa wszystkich modułów - plików xml
+        /// Clear all module list and search for xml files (modules) in PDMS folder
         /// </summary>
         private void getModulesFromPDMS()
         {
@@ -64,9 +64,9 @@ namespace PDMS_Addins
 
 
         /// <summary>
-        /// Czyści listę addinów i dla danego modułu (pliku xml) odczytuje z pliku xml dostępne addiny
+        /// Clear addin list and read from module xml file all addins 
         /// </summary>
-        /// <param name="module">Aktualny moduł z którego mamy pobrać nazwy addinów</param>
+        /// <param name="module">Actual module</param>
         private void getAddinsForModule(string module)
         {
             addinList.Clear();
@@ -92,9 +92,9 @@ namespace PDMS_Addins
 
 
         /// <summary>
-        /// Metoda publiczna do przekazania addinów z danego modułu do właściwości i na zewnątrz
+        /// Puts addins from module xml to addin list
         /// </summary>
-        /// <param name="module">Aktualny moduł dla którego pobrane będa addiny</param>
+        /// <param name="module">Actual module</param>
         public void getAddins(string module)
         {
             getAddinsForModule(module);
@@ -102,11 +102,11 @@ namespace PDMS_Addins
         }
 
         /// <summary>
-        /// Generuje plik xml ze wszystkimi modułami i addinami podczas pierwszego uruchomienia aplikacji.
-        /// Program operuje cały czas na tym pliku. Po kliknięciu save zmiany z pliku xml są zapisywane w
-        /// poszczególnych plikach modułów.
+        /// Generate xml file with all modules and addins and their state
+        /// This file is genereted only with first run of application
+        /// This application is working mainly on this xml file
         /// </summary>
-        /// <param name="xmlPath">Ścieżka do zapisu pliku - zalecane pdmsfolder</param>
+        /// <param name="xmlPath">Path for xml file - reccomended pdmsfolder</param>
         public void generateSourceXml(string xmlPath)
         {
             XmlWriterSettings settings = new XmlWriterSettings();
