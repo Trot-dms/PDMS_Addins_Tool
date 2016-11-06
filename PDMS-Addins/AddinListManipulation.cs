@@ -13,22 +13,32 @@ namespace PDMS_Addins
         
         public List<Addin> AddinList
         {
-            get
-            {
-                return GetAddinList(pdmsFolder);
-            }
+            get { return addinList; }
+            set { addinList = value; }
         }
+                
+        //{
+        //    get
+        //    {
+        //        return GetAddinList(pdmsFolder);
+        //    }
+        //}
 
         public List<Module> ModuleList
         {
-            get
-            {
-                return GetModuleList(pdmsFolder);
-            }
+            get { return moduleList; }
+            set { moduleList = value; }
         }
+        //{
+        //    get
+        //    {
+        //        return GetModuleList(pdmsFolder);
+        //    }
+        //}
 
         private string pdmsFolder;
-
+        private List<Addin> addinList;
+        private List<Module> moduleList;
 
 
         public AddinListManipulation()
@@ -39,6 +49,8 @@ namespace PDMS_Addins
         public AddinListManipulation(string pdmsFolder)
         {
             this.pdmsFolder = pdmsFolder;
+            this.moduleList = new List<Module>(GetModuleList(pdmsFolder));
+            this.addinList = new List<Addin>(GetAddinList(pdmsFolder));
         }
 
         private List<Module> GetModuleList(string pdmsFolder)
