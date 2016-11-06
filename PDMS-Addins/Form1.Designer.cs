@@ -127,7 +127,6 @@
             this.addinsOffList.Name = "addinsOffList";
             this.addinsOffList.Size = new System.Drawing.Size(200, 290);
             this.addinsOffList.TabIndex = 5;
-            this.addinsOffList.SelectedIndexChanged += new System.EventHandler(this.addinsOffList_SelectedIndexChanged);
             this.addinsOffList.SizeChanged += new System.EventHandler(this.addinsOnList_SizeChanged);
             this.addinsOffList.DoubleClick += new System.EventHandler(this.turnAddinOff_Click);
             // 

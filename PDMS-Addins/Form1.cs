@@ -60,7 +60,6 @@ namespace PDMS_Addins
         /// </summary>
         private void turnGadgetsOff()
         {
-            //addinsList.Enabled = false;
             modulesComboBox.Enabled = false;
         }
         /// <summary>
@@ -68,7 +67,6 @@ namespace PDMS_Addins
         /// </summary>
         private void turnGadgetsOn()
         {
-            //addinsList.Enabled = true;
             modulesComboBox.Enabled = true;
         }
         /// <summary>
@@ -76,7 +74,6 @@ namespace PDMS_Addins
         /// </summary>
         private void clearGadgets()
         {
-           // addinsList.Items.Clear();
             modulesComboBox.Items.Clear();
             addinsOnList.Items.Clear();
             addinsOffList.Items.Clear();
@@ -106,27 +103,6 @@ namespace PDMS_Addins
             lastIndex = modulesComboBox.SelectedIndex;
         }
 
-        //private List<string> GetModuleList(Addin_ addin)
-        //{
-        //    List<string> modules = new List<string>();
-        //    foreach(KeyValuePair<string, List<string>> s in addin.MainList)
-        //    {
-        //        modules.Add(s.Key);
-        //    }
-        //    return modules;
-           
-        //}
-
-        //private List<string> GetAddinList(Addin_ addin,string module)
-        //{
-
-        //    List<string> addins = new List<string>();
-
-        //    addins = addin.MainList.SelectMany(d => d.Value).ToList();
-        //    return addins;
-            
-        //}
-
         // TODO: Delete test button later
         /// <summary>
         /// Test button for setting pdmsFolder
@@ -143,13 +119,9 @@ namespace PDMS_Addins
 
             addinList = new AddinListManipulation(pdmsFolder);
             addins = new List<Addin>(addinList.AddinList);
-
-            hasAnythingChanged = false;
             modules = new List<Module>(addinList.ModuleList);
 
-
-            //Addin_ addin = new Addin_(pdmsFolder);
-            //List<string> modules = new List<string>(GetModuleList(addin));
+            hasAnythingChanged = false;
 
             foreach (Module s in modules)
             {
@@ -158,8 +130,7 @@ namespace PDMS_Addins
 
             modulesComboBox.SelectedIndex = 0;
             setLastIndex();
-            //Dictionary<string, List<string>> test = new Dictionary<string, List<string>>(addin.MainList);
-          
+            
         }
 
         /// <summary>
@@ -191,38 +162,30 @@ namespace PDMS_Addins
                 }
 
             }
-            //addinsList.Items.Clear();
-            addinsOnList.Items.Clear();
-            addinsOffList.Items.Clear();
-
-            addinList = new AddinListManipulation(pdmsFolder);
-            addins = new List<Addin>(addinList.AddinList);        
+          
            
-            foreach(Addin item in addins)
-            {
-                string selModule = modulesComboBox.Text;
-                if (item.AddinModule.ModuleName==selModule && item.AddinState==true)
-                {
-                    addinsOnList.Items.Add(item.AddinName);
-                } 
-                else if (item.AddinModule.ModuleName == selModule && item.AddinState == false)
-                {
-                    addinsOffList.Items.Add(item.AddinName);
-                }
-            }
-            //Addin_ addin = new Addin_(pdmsFolder);
-            //string selectedModule = modulesComboBox.Text;
-            //List<string> addins = new List<string>(GetAddinList(addin, selectedModule));
-
-            ////addin.getAddins(selectedModule);
-            //foreach (string s in addins)
-            //{
-            //    addinsList.Items.Add(s, true);
-            //    addinsOnList.Items.Add(s);
-
-            //}
+            fillLists();
+                       
             hasAnythingChanged = false;
             setLastIndex();
+        }
+
+        private void fillLists()
+        {
+            addinsOnList.Items.Clear();
+            addinsOffList.Items.Clear();
+            addins = new List<Addin>(addinList.AddinList);
+
+            foreach (Addin item in addins)
+            {
+                string selModule = modulesComboBox.Text;
+                if (item.AddinModule.ModuleName == selModule)
+                {
+                    if(item.AddinState) addinsOnList.Items.Add(item.AddinName);
+                    else addinsOffList.Items.Add(item.AddinName);
+                }
+                
+            }
 
         }
 
@@ -239,16 +202,23 @@ namespace PDMS_Addins
             //addin.generateSourceXml(pdmsFolder);
         }
 
-        /// <summary>
-        /// Set flag when addinsList item is checked - will be deleted
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void addinsList_ItemCheck(Object sender, ItemCheckEventArgs e)
+        private void changeAddinState(string addinName)
         {
-            hasAnythingChanged = true;
-        }
+            addins = new List<Addin>(addinList.AddinList);
+            
+                string selModule = modulesComboBox.Text;
+                var i = addinList.AddinList.FindIndex(x => (x.AddinName == addinName) && (x.AddinModule.ModuleName==selModule));
+                if (addinList.AddinList[i].AddinState)
+                    addinList.AddinList[i].AddinState = false;
+                else
+                    addinList.AddinList[i].AddinState = true;
 
+               
+                
+           
+
+        }   
+           
         /// <summary>
         /// Move addin from On list to Off list
         /// </summary>
@@ -258,9 +228,12 @@ namespace PDMS_Addins
         {
             if (addinsOnList.SelectedIndex >= 0)
             {
+                //zmień status na false
+                changeAddinState(addinsOnList.Text);
+                fillLists();
 
-                addinsOffList.Items.Add(addinsOnList.Text);
-                addinsOnList.Items.RemoveAt(addinsOnList.SelectedIndex);
+                //addinsOffList.Items.Add(addinsOnList.Text);
+                //addinsOnList.Items.RemoveAt(addinsOnList.SelectedIndex);
                 if (addinsOnList.Items.Count > 0) addinsOnList.SelectedIndex = 0;
 
             }
@@ -277,8 +250,10 @@ namespace PDMS_Addins
         {
             if (addinsOffList.SelectedIndex >= 0)
             {
-                addinsOnList.Items.Add(addinsOffList.Text);
-                addinsOffList.Items.RemoveAt(addinsOffList.SelectedIndex);
+                changeAddinState(addinsOffList.Text);
+                fillLists();
+                //addinsOnList.Items.Add(addinsOffList.Text);
+                //addinsOffList.Items.RemoveAt(addinsOffList.SelectedIndex);
                 if (addinsOffList.Items.Count > 0) addinsOffList.SelectedIndex = 0;
             }
         }
@@ -293,9 +268,6 @@ namespace PDMS_Addins
             hasAnythingChanged = true;
         }
 
-        private void addinsOffList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+   
     }
 }
