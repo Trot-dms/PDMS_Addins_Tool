@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="PDMS_Addins.Addin">
+    <Position X="3.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAQAAAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Addin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMS_Addins.Addin_" Collapsed="true">
+    <Position X="12" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAKIAAABAAAEACAAAAABAAQAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Addin_.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMS_Addins.AddinListManipulation">
+    <Position X="5.75" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AddinListManipulation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMS_Addins.MainWindow">
+    <Position X="0.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>JUIAAAAECCASAIAEAAKIgEADASAcIAgAAWoAAwARAEE=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMS_Addins.Module">
+    <Position X="3.5" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Module.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMS_Addins.Options">
+    <Position X="10.25" Y="2.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAACAAABAAAACAAAACAAAYAAAAEAAAAIABBAA=</HashCode>
+      <FileName>Options.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMS_Addins.Program">
+    <Position X="10.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMS_Addins.Properties.Resources" Collapsed="true">
+    <Position X="12" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMS_Addins.Properties.Settings">
+    <Position X="10.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
