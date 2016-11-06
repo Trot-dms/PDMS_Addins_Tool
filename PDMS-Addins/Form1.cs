@@ -29,6 +29,12 @@ namespace PDMS_Addins
         /// Private int for last Index in checked list box - AddinList
         /// </summary>
         private int lastIndex;
+
+        //private Addin addin;
+        private AddinListManipulation addinList;
+        private List<Addin> addins;
+        private List<Module> modules;
+
         #endregion
 
         public MainWindow()
@@ -54,7 +60,7 @@ namespace PDMS_Addins
         /// </summary>
         private void turnGadgetsOff()
         {
-            addinsList.Enabled = false;
+            //addinsList.Enabled = false;
             modulesComboBox.Enabled = false;
         }
         /// <summary>
@@ -62,7 +68,7 @@ namespace PDMS_Addins
         /// </summary>
         private void turnGadgetsOn()
         {
-            addinsList.Enabled = true;
+            //addinsList.Enabled = true;
             modulesComboBox.Enabled = true;
         }
         /// <summary>
@@ -70,7 +76,7 @@ namespace PDMS_Addins
         /// </summary>
         private void clearGadgets()
         {
-            addinsList.Items.Clear();
+           // addinsList.Items.Clear();
             modulesComboBox.Items.Clear();
             addinsOnList.Items.Clear();
             addinsOffList.Items.Clear();
@@ -100,6 +106,27 @@ namespace PDMS_Addins
             lastIndex = modulesComboBox.SelectedIndex;
         }
 
+        //private List<string> GetModuleList(Addin_ addin)
+        //{
+        //    List<string> modules = new List<string>();
+        //    foreach(KeyValuePair<string, List<string>> s in addin.MainList)
+        //    {
+        //        modules.Add(s.Key);
+        //    }
+        //    return modules;
+           
+        //}
+
+        //private List<string> GetAddinList(Addin_ addin,string module)
+        //{
+
+        //    List<string> addins = new List<string>();
+
+        //    addins = addin.MainList.SelectMany(d => d.Value).ToList();
+        //    return addins;
+            
+        //}
+
         // TODO: Delete test button later
         /// <summary>
         /// Test button for setting pdmsFolder
@@ -114,17 +141,25 @@ namespace PDMS_Addins
 
             pdmsFolder = @"C:\AVEVA\Plant\PDMS12.0.SP4";
 
-            hasAnythingChanged = false;
+            addinList = new AddinListManipulation(pdmsFolder);
+            addins = new List<Addin>(addinList.AddinList);
 
-            Addin addin = new Addin(pdmsFolder);
-            foreach (string s in addin.ModuleList)
+            hasAnythingChanged = false;
+            modules = new List<Module>(addinList.ModuleList);
+
+
+            //Addin_ addin = new Addin_(pdmsFolder);
+            //List<string> modules = new List<string>(GetModuleList(addin));
+
+            foreach (Module s in modules)
             {
-                modulesComboBox.Items.Add(s);
+                modulesComboBox.Items.Add(s.ModuleName);
             }
 
             modulesComboBox.SelectedIndex = 0;
             setLastIndex();
-
+            //Dictionary<string, List<string>> test = new Dictionary<string, List<string>>(addin.MainList);
+          
         }
 
         /// <summary>
@@ -156,19 +191,36 @@ namespace PDMS_Addins
                 }
 
             }
-            addinsList.Items.Clear();
+            //addinsList.Items.Clear();
             addinsOnList.Items.Clear();
             addinsOffList.Items.Clear();
 
-            Addin addin = new Addin(pdmsFolder);
-            string selectedModule = modulesComboBox.Text;
-            addin.getAddins(selectedModule);
-            foreach (string s in addin.AddinList)
+            addinList = new AddinListManipulation(pdmsFolder);
+            addins = new List<Addin>(addinList.AddinList);        
+           
+            foreach(Addin item in addins)
             {
-                addinsList.Items.Add(s, true);
-                addinsOnList.Items.Add(s);
-
+                string selModule = modulesComboBox.Text;
+                if (item.AddinModule.ModuleName==selModule && item.AddinState==true)
+                {
+                    addinsOnList.Items.Add(item.AddinName);
+                } 
+                else if (item.AddinModule.ModuleName == selModule && item.AddinState == false)
+                {
+                    addinsOffList.Items.Add(item.AddinName);
+                }
             }
+            //Addin_ addin = new Addin_(pdmsFolder);
+            //string selectedModule = modulesComboBox.Text;
+            //List<string> addins = new List<string>(GetAddinList(addin, selectedModule));
+
+            ////addin.getAddins(selectedModule);
+            //foreach (string s in addins)
+            //{
+            //    addinsList.Items.Add(s, true);
+            //    addinsOnList.Items.Add(s);
+
+            //}
             hasAnythingChanged = false;
             setLastIndex();
 
@@ -183,8 +235,8 @@ namespace PDMS_Addins
         private void button2_Click(object sender, EventArgs e)
         {
 
-            Addin addin = new Addin(pdmsFolder);
-            addin.generateSourceXml(pdmsFolder);
+            //Addin addin = new Addin(pdmsFolder);
+            //addin.generateSourceXml(pdmsFolder);
         }
 
         /// <summary>

@@ -40,7 +40,6 @@
             this.turnAddinOff = new System.Windows.Forms.Button();
             this.turnAddinOn = new System.Windows.Forms.Button();
             this.addinsOnList = new System.Windows.Forms.ListBox();
-            this.addinsList = new System.Windows.Forms.CheckedListBox();
             this.modulesComboBox = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
@@ -57,7 +56,7 @@
             this.optionsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(467, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(479, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -81,9 +80,9 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.statusPDMSfolder});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 480);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 400);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(467, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(479, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -106,18 +105,17 @@
             this.panel1.Controls.Add(this.turnAddinOff);
             this.panel1.Controls.Add(this.turnAddinOn);
             this.panel1.Controls.Add(this.addinsOnList);
-            this.panel1.Controls.Add(this.addinsList);
             this.panel1.Controls.Add(this.modulesComboBox);
             this.panel1.Location = new System.Drawing.Point(12, 59);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(447, 418);
+            this.panel1.Size = new System.Drawing.Size(455, 334);
             this.panel1.TabIndex = 2;
             // 
             // addNewAddin
             // 
-            this.addNewAddin.Location = new System.Drawing.Point(284, 33);
+            this.addNewAddin.Location = new System.Drawing.Point(209, 33);
             this.addNewAddin.Name = "addNewAddin";
-            this.addNewAddin.Size = new System.Drawing.Size(33, 33);
+            this.addNewAddin.Size = new System.Drawing.Size(37, 41);
             this.addNewAddin.TabIndex = 6;
             this.addNewAddin.Text = "+";
             this.addNewAddin.UseVisualStyleBackColor = true;
@@ -125,9 +123,9 @@
             // addinsOffList
             // 
             this.addinsOffList.FormattingEnabled = true;
-            this.addinsOffList.Location = new System.Drawing.Point(323, 28);
+            this.addinsOffList.Location = new System.Drawing.Point(252, 33);
             this.addinsOffList.Name = "addinsOffList";
-            this.addinsOffList.Size = new System.Drawing.Size(120, 381);
+            this.addinsOffList.Size = new System.Drawing.Size(200, 290);
             this.addinsOffList.TabIndex = 5;
             this.addinsOffList.SelectedIndexChanged += new System.EventHandler(this.addinsOffList_SelectedIndexChanged);
             this.addinsOffList.SizeChanged += new System.EventHandler(this.addinsOnList_SizeChanged);
@@ -135,9 +133,9 @@
             // 
             // turnAddinOff
             // 
-            this.turnAddinOff.Location = new System.Drawing.Point(284, 211);
+            this.turnAddinOff.Location = new System.Drawing.Point(209, 182);
             this.turnAddinOff.Name = "turnAddinOff";
-            this.turnAddinOff.Size = new System.Drawing.Size(33, 66);
+            this.turnAddinOff.Size = new System.Drawing.Size(37, 66);
             this.turnAddinOff.TabIndex = 4;
             this.turnAddinOff.Text = "<<";
             this.turnAddinOff.UseVisualStyleBackColor = true;
@@ -145,9 +143,9 @@
             // 
             // turnAddinOn
             // 
-            this.turnAddinOn.Location = new System.Drawing.Point(284, 139);
+            this.turnAddinOn.Location = new System.Drawing.Point(209, 110);
             this.turnAddinOn.Name = "turnAddinOn";
-            this.turnAddinOn.Size = new System.Drawing.Size(33, 66);
+            this.turnAddinOn.Size = new System.Drawing.Size(37, 66);
             this.turnAddinOn.TabIndex = 3;
             this.turnAddinOn.Text = ">>";
             this.turnAddinOn.UseVisualStyleBackColor = true;
@@ -156,29 +154,20 @@
             // addinsOnList
             // 
             this.addinsOnList.FormattingEnabled = true;
-            this.addinsOnList.Location = new System.Drawing.Point(158, 28);
+            this.addinsOnList.Location = new System.Drawing.Point(3, 33);
             this.addinsOnList.Name = "addinsOnList";
-            this.addinsOnList.Size = new System.Drawing.Size(120, 381);
+            this.addinsOnList.Size = new System.Drawing.Size(200, 290);
             this.addinsOnList.TabIndex = 2;
             this.addinsOnList.SizeChanged += new System.EventHandler(this.addinsOnList_SizeChanged);
             this.addinsOnList.DoubleClick += new System.EventHandler(this.turnAddinOn_Click);
-            // 
-            // addinsList
-            // 
-            this.addinsList.FormattingEnabled = true;
-            this.addinsList.Location = new System.Drawing.Point(3, 30);
-            this.addinsList.Name = "addinsList";
-            this.addinsList.Size = new System.Drawing.Size(109, 379);
-            this.addinsList.TabIndex = 1;
-            this.addinsList.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.addinsList_ItemCheck);
             // 
             // modulesComboBox
             // 
             this.modulesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.modulesComboBox.FormattingEnabled = true;
-            this.modulesComboBox.Location = new System.Drawing.Point(158, 6);
+            this.modulesComboBox.Location = new System.Drawing.Point(3, 6);
             this.modulesComboBox.Name = "modulesComboBox";
-            this.modulesComboBox.Size = new System.Drawing.Size(285, 21);
+            this.modulesComboBox.Size = new System.Drawing.Size(452, 21);
             this.modulesComboBox.TabIndex = 0;
             this.modulesComboBox.SelectedIndexChanged += new System.EventHandler(this.modulesComboBox_SelectedIndexChanged);
             // 
@@ -188,7 +177,7 @@
             this.panel2.Controls.Add(this.button1);
             this.panel2.Location = new System.Drawing.Point(12, 27);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(447, 32);
+            this.panel2.Size = new System.Drawing.Size(417, 32);
             this.panel2.TabIndex = 3;
             // 
             // button2
@@ -215,7 +204,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 502);
+            this.ClientSize = new System.Drawing.Size(479, 422);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
@@ -244,7 +233,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel statusPDMSfolder;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.CheckedListBox addinsList;
         private System.Windows.Forms.ComboBox modulesComboBox;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button1;
