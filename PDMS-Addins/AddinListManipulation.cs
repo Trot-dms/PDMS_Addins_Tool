@@ -16,36 +16,25 @@ namespace PDMS_Addins
             get { return addinList; }
             set { addinList = value; }
         }
-                
-        //{
-        //    get
-        //    {
-        //        return GetAddinList(pdmsFolder);
-        //    }
-        //}
 
         public List<Module> ModuleList
         {
             get { return moduleList; }
             set { moduleList = value; }
         }
-        //{
-        //    get
-        //    {
-        //        return GetModuleList(pdmsFolder);
-        //    }
-        //}
 
         private string pdmsFolder;
         private List<Addin> addinList;
         private List<Module> moduleList;
 
-
         public AddinListManipulation()
         {
             //bez podania ścieżki do folderu PDMSa użyj ścieżki programu
-            pdmsFolder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+            this.pdmsFolder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+            this.moduleList = new List<Module>(GetModuleList(pdmsFolder));
+            this.addinList = new List<Addin>(GetAddinList(pdmsFolder));
         }
+
         public AddinListManipulation(string pdmsFolder)
         {
             this.pdmsFolder = pdmsFolder;
@@ -55,7 +44,6 @@ namespace PDMS_Addins
 
         private List<Module> GetModuleList(string pdmsFolder)
         {
-            
             List<Module> tempModule = new List<Module>();
             string[] tfiles = Directory.GetFiles(pdmsFolder, "*Addins.xml", SearchOption.TopDirectoryOnly);
             foreach (string file in tfiles)
@@ -65,12 +53,11 @@ namespace PDMS_Addins
                 module.ModuleName = Path.GetFileName(file);
                 tempModule.Add(module);
             }
-
-                return tempModule;
+            return tempModule;
         }
+
         private List<Addin> GetAddinList(string pdmsFolder)
         {
-           
             List<Addin> addinList = new List<Addin>();
 
             //tymczasowa lista modułów
@@ -93,9 +80,6 @@ namespace PDMS_Addins
                     addinList.Add(addin);
                 }
             }
-
-            
-
             return addinList;
         }
 
@@ -124,6 +108,25 @@ namespace PDMS_Addins
             return addinList;
         }
 
+        public void saveAddinsToXML(List<string> addins, string module)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            XmlDeclaration xmlDeclaration = xmlDoc.CreateXmlDeclaration("1.0", "utf-8", null);
+            XmlElement rootNode = xmlDoc.CreateElement("ArrayOfString");
+            rootNode.SetAttribute("xmlns:xsd", "http://www.w3.org/2001/XMLSchema");
+            rootNode.SetAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
 
+            xmlDoc.InsertBefore(xmlDeclaration, xmlDoc.DocumentElement);
+            xmlDoc.AppendChild(rootNode);
+            foreach(string item in addins)
+            {
+                XmlElement addinNode = xmlDoc.CreateElement("string");
+                XmlText addinText = xmlDoc.CreateTextNode(item);
+                rootNode.AppendChild(addinNode);
+                addinNode.AppendChild(addinText);
+            }
+            xmlDoc.Save(pdmsFolder + @"/" + module);
+                
+        }
     }
 }
